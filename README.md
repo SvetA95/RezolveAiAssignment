@@ -19,10 +19,6 @@ src/test/java/.../base/      Shared setup/teardown + a polling helper
 src/test/java/.../tests/     Task 4 — the test classes
 ```
 
-Everything lives under `src/test/java` rather than `src/main/java`, since this is
-test-automation tooling (request builders, config, parsing), not a reusable production
-library, so there's no `src/main` here.
-
 ## Requirements
 
 - JDK 17+

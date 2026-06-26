@@ -24,8 +24,6 @@
         <junit.version>5.10.2</junit.version>
         <assertj.version>3.25.3</assertj.version>
         <slf4j.version>2.0.12</slf4j.version>
-
-        <maven.surefire.version>3.2.5</maven.surefire.version>
     </properties>
 
     <dependencies>
@@ -58,21 +56,4 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>${maven.surefire.version}</version>
-                <configuration>
-                    <systemPropertyVariables>
-                        <controller.baseUri>${controller.baseUri}</controller.baseUri>
-                        <controller.customer>${controller.customer}</controller.customer>
-                        <controller.service>${controller.service}</controller.service>
-                    </systemPropertyVariables>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
 </project>

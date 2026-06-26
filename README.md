@@ -19,9 +19,9 @@ src/test/java/.../base/      Shared setup/teardown + a polling helper
 src/test/java/.../tests/     Task 4 — the test classes
 ```
 
-Everything lives under `src/test/java` rather than `src/main/java` — this is test-automation
-tooling (request builders, config, parsing), not a reusable production library, so there's no
-`src/main` here.
+Everything lives under `src/test/java` rather than `src/main/java`, since this is
+test-automation tooling (request builders, config, parsing), not a reusable production
+library, so there's no `src/main` here.
 
 ## Requirements
 
@@ -30,14 +30,14 @@ tooling (request builders, config, parsing), not a reusable production library, 
 
 ## Configuration
 
-Nothing is hardcoded — everything below can be overridden with a system property
-(`-Dcontroller.xxx`) or an environment variable. The defaults point at the live `task-11`
+Nothing is hardcoded. Everything below can be overridden with a system property
+(`-Dcontroller.xxx`) or an environment variable, and the defaults point at the live `task-11`
 environment used for this assignment.
 
 | Setting | System property | Env var | Default |
 |---|---|---|---|
 | Base URI | `controller.baseUri` | `CONTROLLER_BASE_URI` | `https://task-11-ctl.eu-west-1.fdp-qa.fredhopper.com/control` |
-| Customer | `controller.customer` | `CONTROLLER_CUSTOMER` | `jdplc_09_etl2_ctl8-61dbe4da-20260610123310` (the spec's example customer, `demo01`, doesn't actually exist on this environment) |
+| Customer | `controller.customer` | `CONTROLLER_CUSTOMER` | `jdplc_09_etl2_ctl8-61dbe4da-20260610123310` (the spec's example customer, `demo01`, doesn't actually exist here) |
 | Service | `controller.service` | `CONTROLLER_SERVICE` | `fas:live1` |
 | Secondary customer (used only by the scope-isolation test) | `controller.secondaryCustomer` | `CONTROLLER_SECONDARY_CUSTOMER` | `new_look_test_etl2_ctl8-6aa33dc7-20260611085344` |
 | Basic-auth username | `controller.username` | `CONTROLLER_USERNAME` | none |
@@ -63,7 +63,7 @@ afterward (see `BaseApiTest`), since this is a shared environment other runs may
 using. Parallel execution is disabled (`src/test/resources/junit-platform.properties`) so
 that restoration is reliable.
 
-Last run against `task-11`: 24 tests, 2 failures. Both failures are expected — they're the
-`"0"` and `"-1"` cases of `settingInvalidValueIsRejected`, which encode the correct behavior
+Last run against `task-11`: 24 tests, 2 failures. Both failures are expected, the `"0"` and
+`"-1"` cases of `settingInvalidValueIsRejected`, which encode the correct behavior
 (non-positive values should be rejected) and currently fail because the live API accepts
 them instead. See `docs/findings-ticket.md` (BUG-1) for the full writeup.
